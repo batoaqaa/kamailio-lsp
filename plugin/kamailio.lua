@@ -21,7 +21,8 @@ vim.filetype.add({
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "kamailio",
-	callback = function(args)
+	--callback = function(args)
+	callback = function()
 		-- vim.lsp.buf_attach_client(args.buf, client)
 		local root_dir = vim.fn.getcwd()
 		if root_dir then

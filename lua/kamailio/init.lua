@@ -1,54 +1,47 @@
 local M = {}
-local state = { autocmd = {} }
 
--- local augroup = vim.api.nvim_create_augroup('client_cmds', { clear = true })
--- local autocmd = vim.api.nvim_create_autocmd
-local fmt = string.format
+M.setup = function(opts)
+  opts = M.config(opts)
 
-M.start = function(name)
-	local config = M.config(name)
-	local id = vim.lsp.start(config.params)
-	if not id then
-		return
-	end
+  vim.filetype.add {
+    extension = {
+      cfg = 'kamailio',
+    },
+    filename = {
+      ['kamctlrc'] = 'kamailio',
+    },
+    pattern = {
+      ['.*'] = {
+        --function(path, bufnr)
+        function(_, bufnr)
+          local content = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ''
+          if vim.regex([[^#!.*KAMAILIO]]):match_str(content) ~= nil then
+            return 'kamailio'
+          end
+        end,
+      },
+    },
+  }
 
-	-- if vim.v.vim_did_enter == 1 then
-	--   M.buf_attach(config, id)
-	-- end
-	--
-	-- state.autocmd[id] = autocmd('BufEnter', {
-	--   pattern = '*',
-	--   group = augroup,
-	--   desc = fmt('Attach LSP: %s', name),
-	--   callback = function()
-	--     M.buf_attach(config, id)
-	--   end,
-	-- })
+  vim.api.nvim_create_autocmd('FileType', {
+    pattern = 'kamailio',
+    --callback = function(args)
+    callback = function()
+      local id = vim.lsp.start(opts)
+      if not id then
+        return
+      end
+      -- end
+    end,
+  })
 end
 
---M.config = function(name, opts)
-M.config = function(name, _)
-	local server_opts = require(fmt("%s.client", name))
-	server_opts.params.on_exit = M.on_exit
+M.config = function(opts)
+  local server_opts = require 'kamailio.config'
 
-	return server_opts
-end
+  server_opts = vim.tbl_deep_extend('force', server_opts or {}, opts)
 
--- M.buf_attach = function(config, id)
---   local supported = config.filetypes[vim.bo.filetype]
---   if not supported then
---     return
---   end
---
---   local bufnr = vim.api.nvim_get_current_buf()
---   vim.lsp.buf_attach_client(bufnr, id)
--- end
-
---M.on_exit = function(code, signal, client_id)
-M.on_exit = function(_, _, client_id)
-	vim.schedule(function()
-		vim.api.nvim_del_autocmd(state.autocmd[client_id])
-	end)
+  return server_opts
 end
 
 return M

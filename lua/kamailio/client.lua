@@ -51,6 +51,9 @@ local server = {
 			})
 		end
 	end,
+	docs = {
+		description = [[ Kamailio files LSP and syntax settings ]],
+	},
 }
 
 return {

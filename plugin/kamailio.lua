@@ -11,7 +11,6 @@ vim.filetype.add({
 			--function(path, bufnr)
 			function(_, bufnr)
 				local content = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
-				print(content)
 				if vim.regex([[^#!.*KAMAILIO]]):match_str(content) ~= nil then
 					return "kamailio"
 				end

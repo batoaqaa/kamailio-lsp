@@ -1,7 +1,9 @@
+local server_opts = require 'kamailio.config'
 local M = {}
 
 M.setup = function(opts)
-  opts = M.config(opts)
+  -- opts = opts or {}
+  opts = vim.tbl_deep_extend('force', opts or {}, server_opts)
 
   vim.filetype.add {
     extension = {
@@ -36,12 +38,12 @@ M.setup = function(opts)
   })
 end
 
-M.config = function(opts)
-  local server_opts = require 'kamailio.config'
-
-  server_opts = vim.tbl_deep_extend('force', server_opts or {}, opts)
-
-  return server_opts
-end
+-- M.config = function(opts)
+--   local server_opts = require 'kamailio.config'
+--
+--   server_opts = vim.tbl_deep_extend('force', server_opts or {}, opts)
+--
+--   return server_opts
+-- end
 
 return M

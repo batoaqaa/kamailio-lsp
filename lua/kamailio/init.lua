@@ -1,9 +1,9 @@
-local server_opts = require 'kamailio.config'
+local config = require 'kamailio.config'
 local M = {}
 
 M.setup = function(opts)
   -- opts = opts or {}
-  opts = vim.tbl_deep_extend('force', opts or {}, server_opts)
+  opts = vim.tbl_deep_extend('force', opts or {}, config.server_opts)
 
   vim.filetype.add {
     extension = {
@@ -29,7 +29,7 @@ M.setup = function(opts)
     pattern = 'kamailio',
     --callback = function(args)
     callback = function()
-      local id = vim.lsp.start(opts)
+      local id = vim.lsp.start(config.server_opts)
       if not id then
         return
       end

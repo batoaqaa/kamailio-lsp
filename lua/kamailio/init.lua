@@ -29,7 +29,7 @@ M.setup = function(opts)
     pattern = 'kamailio',
     --callback = function(args)
     callback = function()
-      local id = vim.lsp.start(config.server_opts)
+      local id = vim.lsp.start(opts) --config.server_opts)
       if not id then
         return
       end

@@ -3,7 +3,7 @@ local M = {}
 
 M.setup = function(opts)
   -- opts = opts or {}
-  opts = vim.tbl_deep_extend('force', opts or {}, config.server_opts)
+  opts = vim.tbl_deep_extend('force', config.server_opts or {}, opts)
 
   vim.filetype.add {
     extension = {

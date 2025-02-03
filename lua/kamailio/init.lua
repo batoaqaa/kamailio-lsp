@@ -48,17 +48,8 @@ M.setup = function(opts)
       if not id then
         return
       end
-      -- end
     end,
   })
 end
-
--- M.config = function(opts)
---   local server_opts = require 'kamailio.config'
---
---   server_opts = vim.tbl_deep_extend('force', server_opts or {}, opts)
---
---   return server_opts
--- end
 
 return M

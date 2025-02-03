@@ -28,11 +28,11 @@ local server = {
       client.offset_encoding = results.offsetEncoding
     end
 
-    if client.config.settings then
-      client.notify('workspace/didChangeConfiguration', {
-        settings = client.config.settings,
-      })
-    end
+    -- if client.config.settings then
+    --   client.notify('workspace/didChangeConfiguration', {
+    --     settings = client.config.settings,
+    --   })
+    -- end
   end,
   --on_exit = function(code, signal, client_id)
   on_exit = function(_, _, client_id)

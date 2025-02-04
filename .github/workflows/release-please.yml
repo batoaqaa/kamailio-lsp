@@ -1,4 +1,4 @@
-notL2p4THXlW6JWbpRDdBzt8Xiq1SjIhtBJ9ZajX4otL2p4THXlW6JWbpRDdBzt8Xiq1SjIhtBJ9ZajX4otL2p4THXlW6JWbpRDdBzt8Xiq1SjIhtBJ9ZajX4ame: Release Please
+name: Release Please
 on:
   push:
     branches:

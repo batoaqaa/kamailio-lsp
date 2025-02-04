@@ -24,4 +24,4 @@ jobs:
         env:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
         with:
-          dependencies: cmp_nvim_lsp treesitter-parser
+          dependencies: cmp_nvim_lsp # treesitter-parser

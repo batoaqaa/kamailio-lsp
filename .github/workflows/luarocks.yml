@@ -9,7 +9,8 @@ jobs:
   luarocks-upload:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Install C/C++ Compiler
         uses: rlalik/setup-cpp-compiler@master
         with:

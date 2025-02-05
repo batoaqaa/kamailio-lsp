@@ -42,10 +42,10 @@ jobs:
         env:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
           with: # Optional inputs...
-          dependencies: |
-            nvim-treesitter
-          #   plenary.nvim
-          #   nvim-lspconfig
+            dependencies: |
+              nvim-treesitter
+            #   plenary.nvim
+            #   nvim-lspconfig
 # name: Push to Luarocks
 # on:
 #   push:

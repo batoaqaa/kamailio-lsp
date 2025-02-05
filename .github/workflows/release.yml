@@ -41,9 +41,9 @@ jobs:
         uses: nvim-neorocks/luarocks-tag-release@v7
         env:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
-          # with: # Optional inputs...
-          # dependencies: |
-          #   cmp_nvim_lsp
+          with: # Optional inputs...
+          dependencies: |
+            nvim-treesitter
           #   plenary.nvim
           #   nvim-lspconfig
 # name: Push to Luarocks

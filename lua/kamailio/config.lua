@@ -1,12 +1,8 @@
 -- local opts = require("custom.plugins.lsp-config.opts")
 local state = { autocmd = {} }
 
-local has_cmp_lsp, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFoldingOnly = true }
-if has_cmp_lsp then
-  capabilities = cmp_lsp.default_capabilities(capabilities)
-end
 
 local server = {
   name = 'KamaiZen',

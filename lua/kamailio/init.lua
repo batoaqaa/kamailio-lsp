@@ -39,7 +39,6 @@ M.setup = function(opts)
     },
     filetype = 'kamailio', -- if filetype does not match the parser name
   }
-  require('nvim-treesitter').install.commands.TSInstall.run 'kamailio'
   ----------------------------------------
 
   vim.api.nvim_create_autocmd('FileType', {

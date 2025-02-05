@@ -6,7 +6,8 @@ capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFold
 
 local server = {
   name = 'KamaiZen',
-  cmd = { '/home/batoaqaa/KamaiZen/KamaiZen' },
+  cmd = { vim.fn.stdpath 'data' .. '/lazy/KamaiZen/KamaiZen' }, --/home/batoaqaa/KamaiZen/KamaiZen' },
+
   cmd_cwd = vim.fn.getcwd(),
   filetypes = { 'cfg', 'inc', 'kamailio' },
   root_dir = vim.fn.getcwd(),

@@ -40,12 +40,14 @@ M.setup = function(opts)
     },
     filetype = 'kamailio', -- if filetype does not match the parser name
   }
+  vim.cmd 'TSInstall kamailio'
   ----------------------------------------
 
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'kamailio',
     --callback = function(args)
     callback = function()
+      -- vim.cmd [[lua ensure_treesitter_language_installed()]]
       local id = vim.lsp.start(opts) --config.server_opts)
       if not id then
         return

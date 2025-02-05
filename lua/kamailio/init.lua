@@ -29,8 +29,8 @@ M.setup = function(opts)
   local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
   parser_config.kamailio = {
     install_info = {
-      url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
-      -- url = 'https://github.com/batoaqaa/tree-sitter-kamailio', --'/home/batoaqaa/tree-sitter-kamailio', --
+      -- url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
+      url = 'https://github.com/batoaqaa/tree-sitter-kamailio', --'/home/batoaqaa/tree-sitter-kamailio', --
       files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
       -- optional entries:
       branch = 'main', -- default branch in case of git repo if different from master

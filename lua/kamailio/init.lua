@@ -14,6 +14,7 @@ M.setup = function(opts)
     },
     pattern = {
       ['.*'] = {
+        --set files that start with '#!KAMAILIO' as kamailio file type
         --function(path, bufnr)
         function(_, bufnr)
           local content = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ''

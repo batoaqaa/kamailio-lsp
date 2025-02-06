@@ -48,7 +48,12 @@ M.setup = function(opts)
           },
           filetype = 'kamailio', -- if filetype does not match the parser name
         }
-        vim.cmd 'TSInstall kamailio'
+
+        vim.schedule_wrap(function()
+          vim.cmd 'TSInstall kamailio'
+          vim.cmd [[e!]]
+        end)()
+        -- vim.cmd 'TSInstall kamailio'
       end
       -- if parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
       --   vim.cmd 'TSInstall kamailio'

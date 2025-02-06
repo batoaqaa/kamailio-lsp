@@ -31,10 +31,11 @@ M.setup = function(opts)
     --callback = function(args)
     callback = function()
       ----------------------------------------
-      -- [[https://ibrahimshahzad.github.io/posts/parsing_kamailio_cfg/]]
       local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
       local parsers = require 'nvim-treesitter.parsers'
-      if not parser_config['kamailio'] then
+
+      -- if not parser_config["kamailio"] then
+      if not parsers.has_parser 'kamailio' then
         parser_config['kamailio'] = {
           install_info = {
             -- url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
@@ -51,17 +52,12 @@ M.setup = function(opts)
 
         vim.schedule_wrap(function()
           vim.cmd 'TSInstall kamailio'
-          -- vim.cmd [[e!]]
         end)()
-        -- vim.cmd 'TSInstall kamailio'
       end
-      -- if parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
-      --   vim.cmd 'TSInstall kamailio'
-      -- end
       ----------------------------------------
-      -- vim.cmd [[lua ensure_treesitter_language_installed()]]
-      local id = vim.lsp.start(opts) --config.server_opts)
+      local id = vim.lsp.start(opts)
       if not id then
+        vim.notify('Failed to start LSP client', vim.log.levels.ERROR)
         return
       end
     end,

@@ -1,4 +1,3 @@
--- local opts = require("custom.plugins.lsp-config.opts")
 local state = { autocmd = {} }
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -6,7 +5,7 @@ capabilities.textDocument.foldingRange = { dynamicRegistration = false, lineFold
 
 local server = {
   name = 'KamaiZen',
-  cmd = { vim.fn.stdpath 'data' .. '/lazy/KamaiZen/KamaiZen' }, --/home/batoaqaa/KamaiZen/KamaiZen' },
+  cmd = { vim.fn.stdpath 'data' .. '/lazy/KamaiZen/KamaiZen' },
 
   cmd_cwd = vim.fn.getcwd(),
   filetypes = { 'cfg', 'inc', 'kamailio' },
@@ -37,9 +36,6 @@ local server = {
       vim.api.nvim_del_autocmd(state.autocmd[client_id])
     end)
   end,
-  docs = {
-    description = [[ Kamailio files LSP and syntax settings ]],
-  },
 }
 
 return {

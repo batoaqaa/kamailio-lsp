@@ -44,7 +44,7 @@ end
 local M = {}
 
 M.setup = function(opts)
-  local lsp_config = require('kamaizen.config').server_opts
+  local lsp_config = require('kamailio.config').server_opts
   lsp_config = vim.tbl_deep_extend('force', lsp_config or {}, opts)
   vim.api.nvim_create_autocmd('FileType', {
     pattern = 'kamailio',

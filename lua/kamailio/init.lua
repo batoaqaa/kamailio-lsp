@@ -10,12 +10,39 @@ vim.filetype.add {
       --set files that start with '#!KAMAILIO' as kamailio file type
       function(_, bufnr)
         local content = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ''
-        if vim.regex([[^#!.*KAMAILIO]]):match_str(content) ~= nil then
+        --if vim.regex([[^#!.*KAMAILIO]]):match_str(content) ~= nil then
+        if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
           return 'kamailio'
         end
       end,
     },
   },
+
+  -- let max = line("$") > 400 ? 400 : line("$")
+  -- for n in range(1, max)
+  --    if getline(n) =~ '^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)'
+  --       set filetype=kamailio
+  --       return
+  --    elseif getline(n) =~ '^\s*#!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)'
+  --       set filetype=kamailio
+  --       return
+  --    elseif getline(n) =~ '^\s*!!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)'
+  --       set filetype=kamailio
+  --       return
+  --    elseif getline(n) =~ '^\s*modparam\s*(\s*"[^"]\+"'
+  --       set filetype=kamailio
+  --       return
+  --    elseif getline(n) =~ '^\s*loadmodule\s'
+  --       set filetype=kamailio
+  --       return
+  --    elseif getline(n) =~ '^\s*request_route\s*{\s*'
+  --       set filetype=kamailio
+  --       return
+  --    elseif getline(n) =~ '^\s*route\s*{\s*'
+  --       set filetype=kamailio
+  --       return
+  --    endif
+  -- endfor
 }
 ---------------------------------------------------------------------------------------------------------------
 local parsers = require 'nvim-treesitter.parsers'

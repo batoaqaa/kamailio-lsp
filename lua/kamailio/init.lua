@@ -10,8 +10,8 @@ vim.filetype.add {
       --set files that start with '#!KAMAILIO' as kamailio file type
       function(_, bufnr)
         local content = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ''
-        if vim.regex([[^#!.*KAMAILIO]]):match_str(content) ~= nil then
-          -- if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
+        -- if vim.regex([[^#!.*KAMAILIO]]):match_str(content) ~= nil then
+        if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
           return 'kamailio'
         end
       end,

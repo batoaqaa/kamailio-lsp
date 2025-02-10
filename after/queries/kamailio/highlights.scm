@@ -32,6 +32,8 @@
   name: (identifier) @variable.parameter)
 (avp_var
   name: (pvar_argument) @variable.parameter)
+(dlg_var
+  (identifier) @variable.parameter)
  (pvar_expression
    "$" @keyword.operator
    var: (pseudo_content) @attribute.builtin)
@@ -59,6 +61,7 @@
 (top_level_assignment_expression
   key: (identifier) @variable.member
   value: (expression) @variable.parameter)
+
 
 (string) @string
 (call_expression

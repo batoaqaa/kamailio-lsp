@@ -6,6 +6,7 @@ vim.filetype.add {
     cfg = {
       function(_, bufnr)
         local max = vim.api.nvim_buf_line_count(bufnr)
+        print(max)
         if max > 400 then
           max = 400
         end

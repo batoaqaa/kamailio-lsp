@@ -22,7 +22,8 @@ vim.filetype.add {
           return 'kamailio'
         elseif vim.regex([[^\s*request_route\s*{\s*]]):match_str(content) ~= nil then
           return 'kamailio'
-        elseif vim.regex([[^\s*route\s*{\s*]]):match_str(content) ~= nil then
+        -- elseif vim.regex([[^\s*route\s*{\s*]]):match_str(content) ~= nil then
+        elseif vim.regex([[^\s*route.*\s*{\s*]]):match_str(content) ~= nil then
           return 'kamailio'
         end
       end

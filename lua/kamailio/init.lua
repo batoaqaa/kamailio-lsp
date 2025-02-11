@@ -5,12 +5,12 @@ vim.filetype.add {
   extension = {
     cfg = function(path, bufnr)
       local max = vim.api.nvim_buf_line_count(bufnr)
-      print(max)
       if max > 400 then
         max = 400
       end
+      print(max)
       for n = 1, max do
-        local content = vim.api.nvim_buf_get_lines(bufnr, n, 1, false)[1] or ''
+        local content = vim.api.nvim_buf_get_lines(bufnr, n, n + 1, false)[1] or ''
         print(content)
         if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
           return 'kamailio'

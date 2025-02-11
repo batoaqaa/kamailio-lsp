@@ -1,27 +1,28 @@
 local function setft(bufnr)
   local max = vim.api.nvim_buf_line_count(bufnr)
   print(max)
-  if max > 400 then
-    max = 400
-  end
-  for n = 1, max do
-    local content = vim.api.nvim_buf_get_lines(bufnr, n, 1, false)[1] or ''
-    if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
-      return 'kamailio'
-    elseif vim.regex([[^\s*#!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]]):match_str(content) ~= nil then
-      return 'kamailio'
-    elseif vim.regex([[^\s*!!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]]):match_str(content) ~= nil then
-      return 'kamailio'
-    elseif vim.regex([[^\s*modparam\s*(\s*"[^"]\+"]]):match_str(content) ~= nil then
-      return 'kamailio'
-    elseif vim.regex([[^\s*loadmodule\s]]):match_str(content) ~= nil then
-      return 'kamailio'
-    elseif vim.regex([[^\s*request_route\s*{\s*]]):match_str(content) ~= nil then
-      return 'kamailio'
-    elseif vim.regex([[^\s*route\s*{\s*]]):match_str(content) ~= nil then
-      return 'kamailio'
-    end
-  end
+  retrun 'kamailio'
+  -- if max > 400 then
+  --   max = 400
+  -- end
+  -- for n = 1, max do
+  --   local content = vim.api.nvim_buf_get_lines(bufnr, n, 1, false)[1] or ''
+  --   if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
+  --     return 'kamailio'
+  --   elseif vim.regex([[^\s*#!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]]):match_str(content) ~= nil then
+  --     return 'kamailio'
+  --   elseif vim.regex([[^\s*!!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]]):match_str(content) ~= nil then
+  --     return 'kamailio'
+  --   elseif vim.regex([[^\s*modparam\s*(\s*"[^"]\+"]]):match_str(content) ~= nil then
+  --     return 'kamailio'
+  --   elseif vim.regex([[^\s*loadmodule\s]]):match_str(content) ~= nil then
+  --     return 'kamailio'
+  --   elseif vim.regex([[^\s*request_route\s*{\s*]]):match_str(content) ~= nil then
+  --     return 'kamailio'
+  --   elseif vim.regex([[^\s*route\s*{\s*]]):match_str(content) ~= nil then
+  --     return 'kamailio'
+  --   end
+  -- end
 end
 vim.filetype.add {
   -- extension = {

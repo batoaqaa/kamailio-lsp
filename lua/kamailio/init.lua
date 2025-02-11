@@ -20,7 +20,8 @@ vim.filetype.add {
           return 'kamailio'
         elseif vim.regex([[^\s*loadmodule\s]]):match_str(content) ~= nil then
           return 'kamailio'
-        elseif vim.regex([[^\s*request_route\(\s*\_s\s*{\s*\|\s*{\s*\)]]):match_str(content) ~= nil then
+        -- elseif vim.regex([[^\s*request_route\(\s*\_s\s*{\s*\|\s*{\s*\)]]):match_str(content) ~= nil then
+        elseif vim.regex([[^\s*request_route\(\_s\+{\s*\|\s*{\s*\)]]):match_str(content) ~= nil then
           return 'kamailio'
         -- elseif vim.regex([[^\s*route\s*{\s*]]):match_str(content) ~= nil then
         elseif vim.regex([[^\s*route.*\s*{\s*]]):match_str(content) ~= nil then

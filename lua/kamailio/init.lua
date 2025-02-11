@@ -8,7 +8,7 @@ vim.filetype.add {
       if max > 400 then
         max = 400
       end
-      for n = 1, max do
+      for n = 0, max - 1 do
         local content = vim.api.nvim_buf_get_lines(bufnr, n, n + 1, false)[1] or ''
         if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
           return 'kamailio'
@@ -22,8 +22,8 @@ vim.filetype.add {
           return 'kamailio'
         elseif vim.regex([[^\s*request_route\s*{\s*]]):match_str(content) ~= nil then
           return 'kamailio'
-        -- elseif vim.regex([[^\s*route\s*{\s*]]):match_str(content) ~= nil then
-        elseif vim.regex([[^\s*route.*\s*{\s*]]):match_str(content) ~= nil then
+        elseif vim.regex([[^\s*route\s*{\s*]]):match_str(content) ~= nil then
+          -- elseif vim.regex([[^\s*route.*\s*{\s*]]):match_str(content) ~= nil then
           return 'kamailio'
         end
       end

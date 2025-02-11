@@ -9,7 +9,7 @@ vim.filetype.add {
         max = 400
       end
       for n = 0, max - 1 do
-        local content = vim.api.nvim_buf_get_lines(bufnr, n, n + 1, false)[1] or ''
+        local content = vim.api.nvim_buf_get_lines(bufnr, n, n + 2, false)[1] or ''
         if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
           return 'kamailio'
         -- elseif vim.regex([[^\s*#!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]]):match_str(content) ~= nil then

@@ -11,6 +11,7 @@ vim.filetype.add {
       end
       for n = 1, max do
         local content = vim.api.nvim_buf_get_lines(bufnr, n, 1, false)[1] or ''
+        print(content)
         if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
           return 'kamailio'
         elseif vim.regex([[^\s*#!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]]):match_str(content) ~= nil then
@@ -27,6 +28,7 @@ vim.filetype.add {
           return 'kamailio'
         end
       end
+      return 'cfg'
     end,
   },
   filename = {

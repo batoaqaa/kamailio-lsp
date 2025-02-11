@@ -1,7 +1,7 @@
 local function setft(bufnr)
   local max = vim.api.nvim_buf_line_count(bufnr)
   print(max)
-  retrun 'kamailio'
+  return 'kamailio'
   -- if max > 400 then
   --   max = 400
   -- end

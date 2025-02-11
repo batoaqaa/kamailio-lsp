@@ -8,10 +8,8 @@ vim.filetype.add {
       if max > 400 then
         max = 400
       end
-      print(max)
       for n = 1, max do
         local content = vim.api.nvim_buf_get_lines(bufnr, n, n + 1, false)[1] or ''
-        print(content)
         if vim.regex([[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]]):match_str(content) ~= nil then
           return 'kamailio'
         elseif vim.regex([[^\s*#!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]]):match_str(content) ~= nil then

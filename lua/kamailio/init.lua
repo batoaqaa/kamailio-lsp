@@ -6,10 +6,11 @@ vim.filetype.add {
     cfg = function(path, bufnr)
       local result = -1
       -- vim.api.nvim_buf_call(bufnr, function()
-      print(vim.fn.search [[^\s*request_route\_s*{\s*]])
       if vim.fn.search [[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]] > 0 then
         return 'kamailio'
-      elseif vim.fn.search [[^\s*\(request_r\|r\|branch_r\|failure_r\|reply_r\|onreply_r\|onsend_r\|event_r\)oute.*\_s*{\s*]] > 0 then
+      -- elseif vim.fn.search [[^\s*\(request_r\|r\|branch_r\|failure_r\|reply_r\|onreply_r\|onsend_r\|event_r\)oute.*\_s*{\s*]] > 0 then
+      --   return 'kamailio'
+      elseif vim.fn.search [[^\s*\(#\|!\)!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]] > 0 then
         return 'kamailio'
       end
       -- end)

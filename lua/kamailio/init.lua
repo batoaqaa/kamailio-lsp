@@ -48,12 +48,12 @@ if not parser_config['kamailio'] then
       url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
       -- url = 'https://github.com/batoaqaa/tree-sitter-kamailio',
       files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-      branch = 'main',
+      branch = 'master',
       -- branch = 'v0.1.2',
       revision = 'v0.1.2',
       -- optional entries:
       generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-      requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+      requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
     },
     filetype = 'kamailio', -- if filetype does not match the parser name
   }

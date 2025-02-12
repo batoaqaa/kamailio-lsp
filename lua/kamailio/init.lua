@@ -20,6 +20,9 @@ vim.filetype.add {
       elseif vim.fn.search [[^\s*loadmodule\s]] > 0 then
         vim.api.nvim_win_set_cursor(0, { 1, 0 })
         return 'kamailio'
+      elseif vim.fn.search [[^\s*include_file]] > 0 then
+        vim.api.nvim_win_set_cursor(0, { 1, 0 })
+        return 'kamailio'
       end
       return 'cfg'
     end,

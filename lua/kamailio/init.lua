@@ -1,7 +1,7 @@
 vim.filetype.add {
   extension = {
-    -- cfg = function(path, bufnr)
-    cfg = function(_, _)
+    -- change *.cfg files to kamailio file type only for any of the below condition
+    cfg = function(path, bufnr)
       --Special Regex Characters: ., +, *, ?, ^, $, (, ), [, ], {, }, |, \
       if vim.fn.search [[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]] > 0 then
         vim.api.nvim_win_set_cursor(0, { 1, 0 })
@@ -25,7 +25,7 @@ vim.filetype.add {
     end,
   },
   filename = {
-    ['kamctlrc'] = 'kamailio',
+    ['kamctlrc'] = 'kamailio', -- if file name is 'kamctlrc' chane file type to kamailio
   },
   pattern = {
     ['.*'] = {
@@ -53,7 +53,7 @@ if not parser_config['kamailio'] then
       -- branch = 'v0.1.2',
       -- revision = 'v0.1.2',
       generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-      requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
+      requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
     },
     filetype = 'kamailio', -- if filetype does not match the parser name
   }

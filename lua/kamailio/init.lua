@@ -48,7 +48,7 @@ if not parser_config['kamailio'] then
       url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
       -- url = 'https://github.com/batoaqaa/tree-sitter-kamailio',
       files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-      branch = 'master',
+      -- branch = 'master',
       -- branch = 'v0.1.2',
       revision = 'v0.1.2',
       -- optional entries:

@@ -6,9 +6,9 @@ vim.filetype.add {
     cfg = function(path, bufnr)
       local result = -1
       vim.api.nvim_buf_call(bufnr, function()
-        if vim.fn.search [[^\s*request_route\_s*{\s*]] then
+        if vim.search [[^\s*request_route\_s*{\s*]] then
           return 'kamailio'
-        elseif vim.fn.search [[request_route]] then
+        elseif vim.search [[request_route]] then
           return 'kamailio'
         end
       end)

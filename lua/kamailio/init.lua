@@ -6,11 +6,11 @@ vim.filetype.add {
     cfg = function(path, bufnr)
       local result = -1
       -- vim.api.nvim_buf_call(bufnr, function()
-      print(vim.fn.search [[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]])
+      print(vim.fn.search [[^\s*request_route\_s*{\s*]])
       if vim.fn.search [[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]] then
         return 'kamailio'
-        -- elseif vim.fn.search [[^\s*request_route\_s*{\s*]] then
-        --   return 'kamailio'
+      elseif vim.fn.search [[^\s*request_route\_s*{\s*]] then
+        return 'kamailio'
       end
       -- end)
       -- local max = vim.api.nvim_buf_line_count(bufnr)

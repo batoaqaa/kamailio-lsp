@@ -6,19 +6,19 @@ vim.filetype.add {
     cfg = function(path, bufnr)
       --Special Regex Characters: ., +, *, ?, ^, $, (, ), [, ], {, }, |, \
       if vim.fn.search [[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]] > 0 then
-        vim.api.nvim_win_set_cursor(0, { 1, 1 })
+        vim.api.nvim_win_set_cursor(0, { 1, 0 })
         return 'kamailio'
       elseif vim.fn.search [[^\s*\(request_r\|r\|branch_r\|failure_r\|reply_r\|onreply_r\|onsend_r\|event_r\)oute.*\_s*{\s*]] > 0 then
-        vim.api.nvim_win_set_cursor(0, { 1, 1 })
+        vim.api.nvim_win_set_cursor(0, { 1, 0 })
         return 'kamailio'
       elseif vim.fn.search [[^\s*\(#\|!\)!\(define\|ifdef\|ifndef\|endif\|subst\|substdef\)]] > 0 then
-        vim.api.nvim_win_set_cursor(0, { 1, 1 })
+        vim.api.nvim_win_set_cursor(0, { 1, 0 })
         return 'kamailio'
       elseif vim.fn.search [[^\s*modparam\s*(\s*"[^"]\+"]] > 0 then
-        vim.api.nvim_win_set_cursor(0, { 1, 1 })
+        vim.api.nvim_win_set_cursor(0, { 1, 0 })
         return 'kamailio'
       elseif vim.fn.search [[^\s*loadmodule\s]] > 0 then
-        vim.api.nvim_win_set_cursor(0, { 1, 1 })
+        vim.api.nvim_win_set_cursor(0, { 1, 0 })
         return 'kamailio'
       end
       return 'cfg'

@@ -8,6 +8,8 @@ vim.filetype.add {
       vim.api.nvim_buf_call(bufnr, function()
         if vim.fn.search [[^\s*request_route\_s*{\s*]] then
           return 'kamailio'
+        elseif vim.fn.search [[^\s*request_route{\s*]] then
+          return 'kamailio'
         end
       end)
       -- local max = vim.api.nvim_buf_line_count(bufnr)

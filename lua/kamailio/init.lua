@@ -8,7 +8,7 @@ vim.filetype.add {
       vim.api.nvim_buf_call(bufnr, function()
         if vim.fn.search [[^\s*request_route\_s*{\s*]] then
           return 'kamailio'
-        elseif vim.fn.search [[^\s*request_route{\s*]] then
+        elseif vim.fn.search [[request_route]] then
           return 'kamailio'
         end
       end)

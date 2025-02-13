@@ -58,12 +58,12 @@ if not parser_config['kamailio'] then
   }
 end
 
--- local ensure_installed = require('nvim-treesitter.configs').get_ensure_installed_parsers()
--- if type(ensure_installed) == 'table' then
---   ensure_installed[#ensure_installed + 1] = 'kamailio'
---   local opts = { ensure_installed = ensure_installed }
---   require('nvim-treesitter.configs').setup(opts)
-if parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
+local ensure_installed = require('nvim-treesitter.configs').get_ensure_installed_parsers()
+if type(ensure_installed) == 'table' then
+  ensure_installed[#ensure_installed + 1] = 'kamailio'
+  local opts = { ensure_installed = ensure_installed }
+  require('nvim-treesitter.configs').setup(opts)
+elseif parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
   vim.cmd 'TSInstallSync kamailio'
 end
 ---------------------------------------------------------------------------------------------------------------

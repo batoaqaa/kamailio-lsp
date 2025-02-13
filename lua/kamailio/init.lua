@@ -58,9 +58,13 @@ if not parser_config['kamailio'] then
     filetype = 'kamailio', -- if filetype does not match the parser name
   }
 end
-if parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
-  vim.cmd 'TSInstallSync kamailio'
-  -- vim.cmd 'TSInstallFromGrammar kamailio'
+-- if parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
+--   vim.cmd 'TSInstallSync kamailio'
+--   -- vim.cmd 'TSInstallFromGrammar kamailio'
+-- end
+local tree_opts = require 'nvim-treesitter.opts'
+if tree_opts.ensure_installed == 'table' then
+  vim.list_extend(tree_opts.ensure_installed, { 'kamailio' })
 end
 ---------------------------------------------------------------------------------------------------------------
 local M = {}

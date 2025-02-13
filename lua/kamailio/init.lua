@@ -101,7 +101,8 @@ local tree_opts = require 'nvim-treesitter.configs'
 printTable(tree_opts.get_ensure_installed_parsers())
 local ens_ins = tree_opts.get_ensure_installed_parsers()
 if type(ens_ins) == 'table' then
-  vim.list.extend(ens_ins, { 'kamailio' })
+  -- vim.list.extend(ens_ins, { 'kamailio' })
+  ens_ins[#ens_ins + 1] = 'kamailio'
   local opts = {
     ensure_installed = ens_ins,
   }

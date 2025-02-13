@@ -1,3 +1,37 @@
+local function printTable(input)
+  local printTable_cache = {}
+
+  local function sub_printTable(t, indent)
+    if printTable_cache[tostring(t)] then
+      print(indent .. '*' .. tostring(t))
+    else
+      printTable_cache[tostring(t)] = true
+      if type(t) == 'table' then
+        for pos, val in pairs(t) do
+          if type(val) == 'table' then
+            print(indent .. '[' .. pos .. '] => ' .. tostring(t) .. ' {')
+            sub_printTable(val, indent .. string.rep(' ', string.len(pos) + 8))
+            print(indent .. string.rep(' ', string.len(pos) + 6) .. '}')
+          elseif type(val) == 'string' then
+            print(indent .. '[' .. pos .. '] => "' .. val .. '"')
+          else
+            print(indent .. '[' .. pos .. '] => ' .. tostring(val))
+          end
+        end
+      else
+        print(indent .. tostring(t))
+      end
+    end
+  end
+
+  if type(input) == 'table' then
+    print(tostring(input) .. ' {')
+    sub_printTable(input, '  ')
+    print '}'
+  else
+    sub_printTable(input, '  ')
+  end
+end
 vim.filetype.add {
   extension = {
     -- change *.cfg files to kamailio file type only for any of the below condition
@@ -63,6 +97,7 @@ end
 --   -- vim.cmd 'TSInstallFromGrammar kamailio'
 -- end
 local tree_opts = require 'nvim-treesitter.configs'
+printTable(tree_opts.ensure_installed)
 if tree_opts.ensure_installed == 'table' then
   --if tree_opts.opts.ensure_installed == 'table' then
   vim.list_extend(tree_opts.ensure_installed, { 'kamailio' })

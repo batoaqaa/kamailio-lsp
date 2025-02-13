@@ -98,9 +98,14 @@ end
 -- end
 local tree_opts = require 'nvim-treesitter.configs'
 -- printTable(tree_opts.ensure_installed)
-printTable(tree_opts.config.ensure_installed)
-if type(tree_opts.config.ensure_installed) == 'table' then
-  vim.list_extend(tree_opts.config.ensure_installed, { 'kamailio' })
+printTable(tree_opts.get_ensure_installed_parsers())
+local ens_ins = tree_opts.get_ensure_installed_parsers()
+if type(ens_ins) == 'table' then
+  vim.list.extend(ens_ins, { 'kamailio' })
+  local opts = {
+    ensure_installed = ens_ins,
+  }
+  tree_opts.setup(opts)
 end
 ---------------------------------------------------------------------------------------------------------------
 local M = {}

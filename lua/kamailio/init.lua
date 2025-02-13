@@ -1,41 +1,7 @@
-local function printTable(input)
-  local printTable_cache = {}
-
-  local function sub_printTable(t, indent)
-    if printTable_cache[tostring(t)] then
-      print(indent .. '*' .. tostring(t))
-    else
-      printTable_cache[tostring(t)] = true
-      if type(t) == 'table' then
-        for pos, val in pairs(t) do
-          if type(val) == 'table' then
-            print(indent .. '[' .. pos .. '] => ' .. tostring(t) .. ' {')
-            sub_printTable(val, indent .. string.rep(' ', string.len(pos) + 8))
-            print(indent .. string.rep(' ', string.len(pos) + 6) .. '}')
-          elseif type(val) == 'string' then
-            print(indent .. '[' .. pos .. '] => "' .. val .. '"')
-          else
-            print(indent .. '[' .. pos .. '] => ' .. tostring(val))
-          end
-        end
-      else
-        print(indent .. tostring(t))
-      end
-    end
-  end
-
-  if type(input) == 'table' then
-    print(tostring(input) .. ' {')
-    sub_printTable(input, '  ')
-    print '}'
-  else
-    sub_printTable(input, '  ')
-  end
-end
 vim.filetype.add {
   extension = {
     -- change *.cfg files to kamailio file type only for any of the below condition
-    cfg = function(path, bufnr)
+    cfg = function()
       --Special Regex Characters: ., +, *, ?, ^, $, (, ), [, ], {, }, |, \
       if vim.fn.search [[^\s*#!\(KAMAILIO\|OPENSER\|SER\|ALL\|MAXCOMPAT\)]] > 0 then
         vim.api.nvim_win_set_cursor(0, { 1, 0 })
@@ -84,8 +50,7 @@ if not parser_config['kamailio'] then
       files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
       -- optional entries:
       branch = 'main', -- default branch in case of git repo if different from master
-      -- branch = 'v0.1.2',
-      -- revision = 'v0.1.2',
+      revision = 'v0.1.2',
       generate_requires_npm = false, -- if stand-alone parser without npm dependencies
       requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
     },
@@ -93,18 +58,17 @@ if not parser_config['kamailio'] then
   }
 end
 
-local ens_ins = require('nvim-treesitter.configs').get_ensure_installed_parsers()
-if type(ens_ins) == 'table' then
-  ens_ins[#ens_ins + 1] = 'kamailio'
-  local opts = { ensure_installed = ens_ins }
-  printTable(opts)
+local ensure_installed = require('nvim-treesitter.configs').get_ensure_installed_parsers()
+if type(ensure_installed) == 'table' then
+  ensure_installed[#ensure_installed + 1] = 'kamailio'
+  local opts = { ensure_installed = ensure_installed }
   require('nvim-treesitter.configs').setup(opts)
 elseif parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
   vim.cmd 'TSInstallSync kamailio'
 end
 ---------------------------------------------------------------------------------------------------------------
-local M = {}
 
+local M = {}
 M.setup = function(opts)
   local lsp_config = require('kamailio.config').server_opts
   lsp_config = vim.tbl_deep_extend('force', lsp_config or {}, opts)
@@ -119,5 +83,4 @@ M.setup = function(opts)
     end,
   })
 end
-
 return M

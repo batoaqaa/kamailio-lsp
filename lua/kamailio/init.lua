@@ -62,9 +62,9 @@ end
 --   vim.cmd 'TSInstallSync kamailio'
 --   -- vim.cmd 'TSInstallFromGrammar kamailio'
 -- end
-local tree_opts = require 'nvim-treesitter.opts'
-if tree_opts.ensure_installed == 'table' then
-  vim.list_extend(tree_opts.ensure_installed, { 'kamailio' })
+local tree_opts = require 'nvim-treesitter'
+if tree_opts.opts.ensure_installed == 'table' then
+  vim.list_extend(tree_opts.opts.ensure_installed, { 'kamailio' })
 end
 ---------------------------------------------------------------------------------------------------------------
 local M = {}

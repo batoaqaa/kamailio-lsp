@@ -99,7 +99,6 @@ end
 local tree_opts = require 'nvim-treesitter.configs'
 printTable(tree_opts.ensure_installed)
 if type(tree_opts.ensure_installed) == 'table' then
-  --if tree_opts.opts.ensure_installed == 'table' then
   vim.list_extend(tree_opts.ensure_installed, { 'kamailio' })
 end
 ---------------------------------------------------------------------------------------------------------------

@@ -45,15 +45,15 @@ local parser_config = parsers.get_parser_configs()
 if not parser_config['kamailio_cfg'] then
   parser_config['kamailio_cfg'] = {
     install_info = {
-      -- url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
+      url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
       -- url = 'https://github.com/batoaqaa/tree-sitter-kamailio',
-      url = '~/tree-sitter-kamailio-cfg',
+      -- url = '~/tree-sitter-kamailio-cfg',
       -- url = '~/my',
-
       files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+
       -- optional entries:
-      -- branch = 'main', -- default branch in case of git repo if different from master
-      -- revision = 'v0.1.2',
+      branch = 'main', -- default branch in case of git repo if different from master
+      revision = 'v0.1.2',
       generate_requires_npm = false, -- if stand-alone parser without npm dependencies
       requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
     },

@@ -42,12 +42,12 @@ vim.filetype.add {
 ---------------------------------------------------------------------------------------------------------------
 local parsers = require 'nvim-treesitter.parsers'
 local parser_config = parsers.get_parser_configs()
-if not parser_config['kamailio'] then
-  parser_config['kamailio'] = {
+if not parser_config['kamailio_cfg'] then
+  parser_config['kamailio_cfg'] = {
     install_info = {
       -- url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
       -- url = 'https://github.com/batoaqaa/tree-sitter-kamailio',
-      url = '~/tree-sitter-kamailio-cfg',
+      url = '~/tree-sitter-kamailio_cfg',
       -- url = '~/my',
 
       files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
@@ -64,12 +64,12 @@ end
 local ensure_installed = require('nvim-treesitter.configs').get_ensure_installed_parsers()
 -- add to ensure_installed table if valid
 if type(ensure_installed) == 'table' then
-  ensure_installed[#ensure_installed + 1] = 'kamailio'
+  ensure_installed[#ensure_installed + 1] = 'kamailio_cfg'
   local opts = { ensure_installed = ensure_installed }
   require('nvim-treesitter.configs').setup(opts)
 -- else install parser
-elseif parser_config['kamailio'] and not parsers.has_parser 'kamailio' then
-  vim.cmd 'TSInstallSync kamailio'
+elseif parser_config['kamailio_cfg'] and not parsers.has_parser 'kamailio_cfg' then
+  vim.cmd 'TSInstallSync kamailio_cfg'
 end
 ---------------------------------------------------------------------------------------------------------------
 

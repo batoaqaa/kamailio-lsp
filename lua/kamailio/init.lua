@@ -49,7 +49,7 @@ if not parser_config['kamailio'] then
       -- url = 'https://github.com/batoaqaa/tree-sitter-kamailio',
       -- url = 'https://github.com/batoaqaa/kamailio-lsp',
       url = vim.fn.stdpath 'data' .. '/lazy/kamailio-lsp',
-      -- files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+      files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
 
       -- optional entries:
       -- branch = 'main', -- default branch in case of git repo if different from master

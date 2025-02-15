@@ -42,8 +42,8 @@ vim.filetype.add {
 ---------------------------------------------------------------------------------------------------------------
 local parsers = require 'nvim-treesitter.parsers'
 local parser_config = parsers.get_parser_configs()
-if not parser_config['kamailio'] then
-  parser_config['kamailio'] = {
+if not parser_config['kamailio_cfg'] then
+  parser_config['kamailio_cfg'] = {
     install_info = {
       -- url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
       -- url = 'https://github.com/batoaqaa/tree-sitter-kamailio',

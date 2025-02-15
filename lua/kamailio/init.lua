@@ -59,6 +59,7 @@ if not parser_config['kamailio_cfg'] then
     },
     filetype = 'kamailio', -- if filetype does not match the parser name
   }
+  vim.treesitter.language.register('kamailio_cfg', 'kamailio')
 end
 
 local ensure_installed = require('nvim-treesitter.configs').get_ensure_installed_parsers()

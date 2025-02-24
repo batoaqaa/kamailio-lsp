@@ -42,17 +42,19 @@ local parser_config = parsers.get_parser_configs()
 if not parser_config['kamailio'] then
   parser_config['kamailio'] = {
     install_info = {
+      -- no need to re-download parser.c from  "https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg"
+      -- as it has been already download with KamaiZen plugin in kamailio_cfg folder
+      url = vim.fn.stdpath 'data' .. '/lazy/KamaiZen',
+      files = { 'kamailio_cfg/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+
       -- url = 'https://github.com/IbrahimShahzad/tree-sitter-kamailio-cfg',
-      url = 'https://github.com/batoaqaa/tree-sitter-kamailio',
-      -- url = 'https://github.com/batoaqaa/kamailio-lsp',
-      -- url = vim.fn.stdpath 'data' .. '/lazy/kamailio-lsp',
-      files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
+      -- files = { 'src/parser.c' }, -- note that some parsers also require src/scanner.c or src/scanner.cc
 
       -- optional entries:
-      branch = 'main', -- default branch in case of git repo if different from master
-      -- revision = 'v0.1.2',
+      -- branch = 'main', -- default branch in case of git repo if different from master
+      -- revision = 'v0.1.3',
       -- generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-      -- requires_generate_from_grammar = true, -- if folder contains pre-generated src/parser.c
+      -- requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
     },
     filetype = 'kamailio', -- if filetype does not match the parser name
   }
